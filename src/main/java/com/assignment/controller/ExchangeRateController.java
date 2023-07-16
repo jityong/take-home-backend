@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.assignment.model.Currency.CRYPTO_CURRENCY_STRINGS;
-import static com.assignment.model.Currency.FIAT_CURRENCY_STRINGS;
+import static com.assignment.model.Currency.CRYPTO_CURRENCY_ENUMS;
+import static com.assignment.model.Currency.FIAT_CURRENCY_ENUMS;
 
 @RestController
 public class ExchangeRateController {
@@ -33,7 +33,7 @@ public class ExchangeRateController {
         }
         CurrencyTypeEnum baseType = CurrencyTypeEnum.valueOf(base);
         Map<CurrencyEnum, Map<CurrencyEnum, String>> result = new HashMap<>();
-        List<CurrencyEnum> baseCurrencies = baseType == CurrencyTypeEnum.FIAT ? FIAT_CURRENCY_STRINGS : CRYPTO_CURRENCY_STRINGS;
+        List<CurrencyEnum> baseCurrencies = baseType == CurrencyTypeEnum.FIAT ? FIAT_CURRENCY_ENUMS : CRYPTO_CURRENCY_ENUMS;
 
         for (CurrencyEnum baseCurrency : baseCurrencies) {
             Map<CurrencyEnum, String> curr = exchangeRatesService.getExchangeRates(baseCurrency, baseType);
