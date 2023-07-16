@@ -13,3 +13,7 @@ install the timescaledb extension as per the guide above before running the app,
 migration.
 
 
+### Update frequency to retrieve data from API
+Set to default value of `5000ms`
+
+You can edit this in `application.properties`, under the key `get-exchange-rates-frequency-ms` 

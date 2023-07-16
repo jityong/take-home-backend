@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,7 +29,10 @@ public class GetLatestExchangeRates {
         this.exchangeRatesRepo = exchangeRatesRepo;
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(
+            fixedDelayString = "${get-exchange-rates-frequency-ms}",
+            timeUnit = TimeUnit.MILLISECONDS
+    )
     public void getLatestExchangeRates() {
         final String API_URL = "https://api.coinbase.com/v2/exchange-rates?currency={currency}";
 
