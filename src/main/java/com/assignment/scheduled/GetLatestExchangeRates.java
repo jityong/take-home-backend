@@ -52,6 +52,8 @@ public class GetLatestExchangeRates {
                     .collect(Collectors.toMap(e -> Currency.CurrencyEnum.valueOf(e.getKey()), Map.Entry::getValue));
 
             exchangeRatesRepo.updateExchangeRates(base, result);
+
+            // Leaving this here for ease of testing/visibility when running
             System.out.println(base);
             System.out.println(result);
         }
